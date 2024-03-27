@@ -136,11 +136,11 @@ export default class NotesDaterPlugin extends Plugin {
   async onunload() {
   }
 
-  isValidDate(dateFrontmatter) { 
+  isValidDate(dateFrontmatter: any) { 
     return moment(dateFrontmatter).isValid() && dateFrontmatter !== undefined;
   }
 
-  setStatusBarDateValues(statusBarCreatedOn, statusBarUpdatedOn) {
+  setStatusBarDateValues(statusBarCreatedOn: HTMLElement, statusBarUpdatedOn: HTMLElement) {
     const activeView = this.app.workspace.getActiveViewOfType(FileView);
     const activeFile = this.app.workspace.getActiveFile();
     if (activeView && activeFile) {

@@ -11,6 +11,7 @@ if you want to view the source, please visit the github repository of this plugi
 
 const prod = (process.argv[2] === "production");
 
+async function watch() {
 const context = await esbuild.context({
 	banner: {
 		js: banner,
@@ -37,7 +38,7 @@ const context = await esbuild.context({
 	logLevel: "info",
 	sourcemap: prod ? false : "inline",
 	treeShaking: true,
-	outfile: "main.js",
+	outfile: "output/main.js",
 });
 
 if (prod) {
@@ -46,3 +47,7 @@ if (prod) {
 } else {
 	await context.watch();
 }
+}
+watch();
+
+// NOTE: Besoin de https://stackoverflow.com/questions/72971679/get-esbuild-to-watch-for-changes-rebuild-and-restart-express-server
